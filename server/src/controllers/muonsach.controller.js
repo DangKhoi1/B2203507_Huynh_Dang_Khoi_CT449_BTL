@@ -1,17 +1,17 @@
-const bookBorrowService = require('../services/muonsach.service')
+const muonSachService = require('../services/muonsach.service')
 const jwt = require('jsonwebtoken')
 const ApiError = require('../api-error')
 
 
 function verifyTokenForUser(req, res) {
-    const token = req.headers['authorization']
+    const token = req.headers['Cho phép']
     return new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, user) => {
-            if (error) {  //Khong quan tam den user.ChucVu
-                return reject('Unauthorized !')
+        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, nguoiDung) => {
+            if (error) {  //Khong quan tam den nguoiDung.ChucVu
+                return reject('Trái phép !')
             }
             else {
-                resolve(user)
+                resolve(nguoiDung)
             }
         })
     })
@@ -19,29 +19,29 @@ function verifyTokenForUser(req, res) {
 
 
 function verifyTokenForAdmin(req, res) {
-    const token = req.headers['authorization']
+    const token = req.headers['Cho phép']
     return new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, user) => {
-            if (error || !user.ChucVu) {
-                return reject('Unauthorized !')
+        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, nguoiDung) => {
+            if (error || !nguoiDung.ChucVu) {
+                return reject('Trái phép !')
             }
             else {
-                resolve(user)
+                resolve(nguoiDung)
             }
         })
     })
 }
 
-//for user
+//for nguoiDung
 module.exports.getAllForUser = async (req, res, next) => {
     try {
-        const user = await verifyTokenForUser(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.getAllForUser(user._id)
-        res.json(result)
+        const nguoiDung = await verifyTokenForUser(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.getAllForUser(nguoiDung._id)
+        res.json(ketqua)
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while getAllForUser !"))
@@ -50,15 +50,15 @@ module.exports.getAllForUser = async (req, res, next) => {
 
 module.exports.addBorrow = async (req, res, next) => {
     try {
-        const user = await verifyTokenForUser(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.addBorrow(req.body, user._id)
-        if (result) {
-            res.json(result)
+        const nguoiDung = await verifyTokenForUser(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.addBorrow(req.body, nguoiDung._id)
+        if (ketqua) {
+            res.json(ketqua)
         }
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while getAllForUser !"))
@@ -67,16 +67,16 @@ module.exports.addBorrow = async (req, res, next) => {
 
 module.exports.deleteBorrowForUser = async (req, res, next) => {
     try {
-        const borrowId = req.params.borrowId
-        const user = await verifyTokenForUser(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.deleteBorrowForUser(borrowId)
-        if (result) {
-            res.json(result)
+        const muonId = req.params.muonId
+        const nguoiDung = await verifyTokenForUser(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.deleteBorrowForUser(muonId)
+        if (ketqua) {
+            res.json(ketqua)
         }
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while deleteBorrowForUser !"))
@@ -86,16 +86,16 @@ module.exports.deleteBorrowForUser = async (req, res, next) => {
 //for admin
 module.exports.deleteBorrowForAdmin = async (req, res, next) => {
     try {
-        const borrowId = req.params.borrowId
-        const user = await verifyTokenForAdmin(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.deleteBorrowForAdmin(borrowId)
-        if (result) {
-            res.json(result)
+        const muonId = req.params.muonId
+        const nguoiDung = await verifyTokenForAdmin(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.deleteBorrowForAdmin(muonId)
+        if (ketqua) {
+            res.json(ketqua)
         }
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while deleteBorrowForAdmin !"))
@@ -104,15 +104,15 @@ module.exports.deleteBorrowForAdmin = async (req, res, next) => {
 
 module.exports.updateBorrowForAdmin = async (req, res, next) => {
     try {
-        const user = await verifyTokenForAdmin(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.updateBorrowForAdmin(user._id, req.body)
-        if (result) {
-            res.json(result)
+        const nguoiDung = await verifyTokenForAdmin(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.updateBorrowForAdmin(nguoiDung._id, req.body)
+        if (ketqua) {
+            res.json(ketqua)
         }
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while updateBorrowForAdmin !"))
@@ -121,15 +121,15 @@ module.exports.updateBorrowForAdmin = async (req, res, next) => {
 
 module.exports.getAllForAdmin = async (req, res, next) => {
     try {
-        const user = await verifyTokenForAdmin(req, res)
-        const borrowService = new bookBorrowService()
-        const result = await borrowService.getAllForAdmin()
-        if (result) {
-            res.json(result)
+        const nguoiDung = await verifyTokenForAdmin(req, res)
+        const muonService = new muonSachService()
+        const ketqua = await muonService.getAllForAdmin()
+        if (ketqua) {
+            res.json(ketqua)
         }
     } catch (error) {
         console.log(error)
-        if (error == 'Unauthorized !') {
+        if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
         return next(new ApiError(500, "An error occurred while getAllForAdmin !"))

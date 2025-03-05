@@ -1,70 +1,70 @@
-const bookModel = require('../models/sach.model')
-const bookBorrowModel = require('../models/muonsach.model')
+const sachModel = require('../models/sach.model')
+const muonSachModel = require('../models/muonsach.model')
 
-module.exports = class bookBorrowService {
+module.exports = class muonSachService {
     // for admin
     async getAllForAdmin() {
-        const borrowList = await bookBorrowModel.find({})
+        const danhSachMuon = await muonSachModel.find({})
             .populate('MaSach')
             .populate('MaNhanVien', ["HoTenNV", "ChucVu", "SoDienThoai"])
             .populate('MaDocGia', ['HoLot', 'Ten', 'NgaySinh', 'GioiTinh', 'DiaChi', 'SoDienThoai'])
         return {
-            borrows: borrowList,
+            muon: danhSachMuon,
             message: "Lấy thông tin mượn sách thành công!"
         }
     }
 
-    async deleteBorrowForAdmin(borrowId) {
-        const borrow = await bookBorrowModel.findOneAndDelete({ _id: borrowId })
-        if (borrow) {
-            if (borrow.TrangThai != 'paid') {
-                const book = await bookModel.findById(borrow.MaSach)
-                await bookModel.findByIdAndUpdate(borrow.MaSach, { $set: { SoLuongDaMuon: book.SoLuongDaMuon - borrow.SoLuongMuon } })
+    async deleteBorrowForAdmin(muonId) {
+        const muon = await muonSachModel.findOneAndDelete({ _id: muonId })
+        if (muon) {
+            if (muon.TrangThai != 'trả') {
+                const sach = await sachModel.findById(sach.MaSach)
+                await sachModel.findByIdAndUpdate(muon.MaSach, { $set: { SoLuongDaMuon: sach.SoLuongDaMuon - muon.SoLuongMuon } })
             }
         }
         return {
-            borrow: borrow,
+            muon: muon,
             message: "Xóa mượn sách thành công!"
         }
     }
 
-    async updateBorrowForAdmin(staffId, updateData) {
-        if (updateData.TrangThai == 'borrow') {
-            const borrow = await bookBorrowModel.findOneAndUpdate(
-                { _id: updateData._id },
+    async updateBorrowForAdmin(nhanVienId, capNhatDuLieu) {
+        if (capNhatDuLieu.TrangThai == 'mượn') {
+            const muon = await muonSachModel.findOneAndUpdate(
+                { _id: capNhatDuLieu._id },
                 {
-                    TrangThai: updateData.TrangThai,
+                    TrangThai: capNhatDuLieu.TrangThai,
                     NgayMuon: Date.now(),
-                    MaNhanVien: staffId
+                    MaNhanVien: nhanVienId
                 },
                 { new: true }
             )
 
-            const borrowDetail = await bookBorrowModel.findOne(({ _id: updateData._id }))
+            const chiTietMuon = await muonmSachModel.findOne(({ _id: capNhatDuLieu._id }))
                 .populate('MaSach')
                 .populate('MaNhanVien', ["HoTenNV", "ChucVu", "SoDienThoai"])
                 .populate('MaDocGia', ['HoLot', 'Ten', 'NgaySinh', 'GioiTinh', 'DiaChi', 'SoDienThoai'])
             return {
-                borrow: borrowDetail,
+                muon: chiTietMuon,
                 message: "Cập nhật thành công!"
             }
         }
 
-        else if (updateData.TrangThai == 'paid') {
-            const borrow = await bookBorrowModel.findOne({ _id: updateData._id })
-            const book = await bookModel.findOne({ _id: borrow.MaSach }) //ma sach o day la ID
-            const returnDay = Date.now()
-            borrow.TrangThai = updateData.TrangThai
-            borrow.MaNhanVien = staffId
-            borrow.NgayTra = returnDay
-            await borrow.save()
-            await bookModel.findByIdAndUpdate(borrow.MaSach, { $set: { SoLuongDaMuon: book.SoLuongDaMuon - borrow.SoLuongMuon } })
-            const savedBorrow = await bookBorrowModel.findOne({ _id: updateData._id })
+        else if (capNhatDuLieu.TrangThai == 'trả') {
+            const muon = await muonSachModel.findOne({ _id: capNhatDuLieu._id })
+            const sach = await sachModel.findOne({ _id: muon.MaSach }) //ma sach o day la ID
+            const traVeNgay = Date.now()
+            muon.TrangThai = capNhatDuLieu.TrangThai
+            muon.MaNhanVien = nhanVienId
+            muon.NgayTra = traVeNgay
+            await muon.save()
+            await sachModel.findByIdAndUpdate(muon.MaSach, { $set: { SoLuongDaMuon: sach.SoLuongDaMuon - muon.SoLuongMuon } })
+            const luuMuonSach = await muonSachModel.findOne({ _id: capNhatDuLieu._id })
                 .populate('MaSach')
                 .populate('MaNhanVien', ["HoTenNV", "ChucVu", "SoDienThoai"])
                 .populate('MaDocGia', ['HoLot', 'Ten', 'NgaySinh', 'GioiTinh', 'DiaChi', 'SoDienThoai'])
             return {
-                borrow: savedBorrow,
+                muon: luuMuonSach,
                 message: "Cập nhật thành công!"
             }
         }
@@ -72,21 +72,21 @@ module.exports = class bookBorrowService {
 
     //for user
 
-    async getAllForUser(userId) {
-        const borrowList = await bookBorrowModel.find({ MaDocGia: userId }).populate('MaSach')
+    async getAllForUser(nguoiDungId) {
+        const danhSachMuon = await muonSachModel.find({ MaDocGia: nguoiDungId }).populate('MaSach')
         return {
-            borrows: borrowList,
+            muon: danhSachMuon,
             message: "Lấy dữ liệu mượn sách thành công!"
         }
     }
 
-    async deleteBorrowForUser(idBorrow) {
-        const deletedBorrow = await bookBorrowModel.findOneAndDelete({ _id: idBorrow, TrangThai: 'pending' })
-        if (deletedBorrow) {
-            const book = await bookModel.findById(deletedBorrow.MaSach)
-            await bookModel.findByIdAndUpdate(deletedBorrow.MaSach, { $set: { SoLuongDaMuon: book.SoLuongDaMuon - deletedBorrow.SoLuongMuon } })
+    async deleteBorrowForUser(muonId) {
+        const xoaMuonSach = await muonSachModel.findOneAndDelete({ _id: muonId, TrangThai: 'chưa giải quyết' })
+        if (xoaMuonSach) {
+            const sach = await sachModel.findById(xoaMuonSach.MaSach)
+            await sachModel.findByIdAndUpdate(xoaMuonSach.MaSach, { $set: { SoLuongDaMuon: sach.SoLuongDaMuon - xoaMuonSach.SoLuongMuon } })
             return {
-                borrow: deletedBorrow,
+                muon: xoaMuonSach,
                 message: "Hủy mượn sách thành công!"
             }
         }
@@ -95,21 +95,21 @@ module.exports = class bookBorrowService {
         }
     }
 
-    async addBorrow(data, userId) {
-        const newBorrow = new bookBorrowModel({
-            MaDocGia: userId,
-            MaSach: data.MaSach,
-            SoLuongMuon: data.SoLuongMuon //
+    async addBorrow(dulieu, nguoiDungId) {
+        const muonSachMoi = new muonSachModel({
+            MaDocGia: nguoiDungId,
+            MaSach: dulieu.MaSach,
+            SoLuongMuon: dulieu.SoLuongMuon //
         })
-        await newBorrow.save()
-        if (newBorrow) {
+        await muonSachMoi.save()
+        if (muonSachMoi) {
             //update so luong sach da muon
-            const book = await bookModel.findById(data.MaSach)
-            await bookModel.findByIdAndUpdate(data.MaSach, { $set: { SoLuongDaMuon: book.SoLuongDaMuon + newBorrow.SoLuongMuon } })
-            console.log(book.TenSach)
+            const sach = await sachModel.findById(dulieu.MaSach)
+            await sachModel.findByIdAndUpdate(dulieu.MaSach, { $set: { SoLuongDaMuon: sach.SoLuongDaMuon + muonSachMoi.SoLuongMuon } })
+            console.log(sach.TenSach)
         }
         return {
-            borrow: newBorrow,
+            muon: muonSachMoi,
             message: "Mượn sách thành công!"
         }
     }
