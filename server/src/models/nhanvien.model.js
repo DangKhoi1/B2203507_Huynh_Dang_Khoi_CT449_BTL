@@ -11,7 +11,7 @@ const bangNhanVien = new mongoose.Schema(
     {
         timestamps: true,
         minimize: false,
-        collection: 'Nhanvien'
+        collection: 'NhanVien'
     },
 );
 

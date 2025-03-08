@@ -5,26 +5,12 @@ module.exports = class nhaXuatBanService {
     async add(dulieu) {
 
         const nhaXuatBanMoi = new nhaXuatBanModel(dulieu)
-        // const isValid = await publisherModel.exists({TenNXB : data.TenNXB})
-        // const isMaNXBDuplicated = await publisherModel.exists({ MaNXB: data.MaNXB });
-
-        // if(isMaNXBDuplicated){
-        //     return { 
-        //         message: "Mã nhà xuất bản không được trùng lặp!",
-        //     }
-        // }
-
-        // if(isValid) {
-        //     return {
-        //         message: "Nhà xuất bản đã tồn tại !",
-        //     }
-        // }
         const ketqua = await nhaXuatBanMoi.save()
         return {
-            nhaxuatban: nhaXuatBanMoi,
+            nhaXuatBanMoi: nhaXuatBanMoi,
             message: 'Thêm nhà xuất bản thành công!'
         }
-    } s
+    }
 
 
     async find(dieukien) {
@@ -44,27 +30,75 @@ module.exports = class nhaXuatBanService {
     }
 
     async update(dulieu) {
-        const capNhatNhaXuatBan = await nhaXuatBanModel.findOneAndUpdate(
-            { MaNXB: dulieu.MaNXB },
-            { $set: { TenNXB: dulieu.TenNXB, DiaChi: dulieu.DiaChi } },
-            { returnDocument: "after" }
-        )
-        return {
-            nhaXuatBan: capNhatNhaXuatBan,
-            message: "Cập nhật nhà xuất bản thành công"
+        try {
+            // Ép kiểu MaNXB về Number
+            const MaNXB = Number(dulieu.MaNXB);
+            if (isNaN(MaNXB)) {
+                return {
+                    nhaXuatBan: null,
+                    message: "MaNXB không hợp lệ"
+                };
+            }
+
+            // Cập nhật dữ liệu trong MongoDB
+            const capNhatNhaXuatBan = await nhaXuatBanModel.findOneAndUpdate(
+                { MaNXB: MaNXB }, // Tìm theo MaNXB kiểu Number
+                { $set: { TenNXB: dulieu.TenNXB, DiaChi: dulieu.DiaChi } },
+                { new: true } // Dùng `new: true` để trả về dữ liệu sau khi cập nhật
+            );
+
+            if (!capNhatNhaXuatBan) {
+                return {
+                    nhaXuatBan: null,
+                    message: "Không tìm thấy nhà xuất bản để cập nhật"
+                };
+            }
+
+            return {
+                nhaXuatBan: capNhatNhaXuatBan,
+                message: "Cập nhật nhà xuất bản thành công"
+            };
+        } catch (error) {
+            return {
+                nhaXuatBan: null,
+                message: "Lỗi",
+                error: error.message
+            };
         }
     }
 
+
+
     async deleteAll() {
-        const ketqua = await nhaXuatBanModelModel.deleteMany({})
+        const ketqua = await nhaXuatBanModel.deleteMany({})
         return ketqua.deletedCount
     }
 
     async delete(maNhaXuatBan) {
-        const nhaXuatBanDaXoa = await nhaXuatBanModel.findOneAndDelete({ MaNXB: maNhaXuatBan })
-        return {
-            nhaXuatBan: nhaXuatBanDaXoa,
-            message: 'Xoắ nhà xuất bản thành công'
+        try {
+            // Ép kiểu sang Number
+            const MaNXB = Number(maNhaXuatBan);
+
+            if (isNaN(MaNXB)) {
+                return { message: "MaNXB không hợp lệ" };
+            }
+
+            const nhaXuatBanDaXoa = await nhaXuatBanModel.findOneAndDelete({ MaNXB });
+
+            if (!nhaXuatBanDaXoa) {
+                return { message: "Không tìm thấy nhà xuất bản để xóa" };
+            }
+
+            return {
+                nhaXuatBan: nhaXuatBanDaXoa,
+                message: "Xóa nhà xuất bản thành công"
+            };
+        } catch (error) {
+            return {
+                message: "Lỗi",
+                error: error.message
+            };
         }
     }
+
 }

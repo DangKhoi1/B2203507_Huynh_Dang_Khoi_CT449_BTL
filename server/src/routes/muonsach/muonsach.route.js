@@ -8,6 +8,6 @@ router
     .get('/admin', muonSachController.getAllForAdmin)
     .post('/add', muonSachController.addBorrow) //user
     .patch('/admin/update', muonSachController.updateBorrowForAdmin)
-    .delete('/user/delete/:borrowId', muonSachController.deleteBorrowForUser)
-    .delete('/admin/delete/:borrowId', muonSachController.deleteBorrowForAdmin)
+    .delete('/user/delete/:muonId', muonSachController.deleteBorrowForUser)
+    .delete('/admin/delete/:muonId', muonSachController.deleteBorrowForAdmin)
 module.exports = router

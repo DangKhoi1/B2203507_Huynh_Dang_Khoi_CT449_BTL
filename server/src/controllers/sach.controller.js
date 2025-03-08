@@ -4,7 +4,7 @@ const ApiError = require('../api-error')
 
 
 function verifyToken(req, res) {
-    const token = req.headers['Cho phép']
+    const token = req.headers['authorization']
     return new Promise((resolve, reject) => {
         jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, nguoidung) => {
             if (error || !nguoidung.ChucVu) {

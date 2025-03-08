@@ -35,7 +35,7 @@ module.exports = class nhanVienService {
 
         try {
 
-            const kiemTraNhanVien = await nhanvienModel.findOne({ SoDienThoai: nhanvien.SoDienThoai })
+            const kiemTraNhanVien = await nhanVienModel.findOne({ SoDienThoai: nhanvien.SoDienThoai })
 
             if (!kiemTraNhanVien) {
                 return { message: "Tài khoản không tồn tại !" }

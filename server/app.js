@@ -12,7 +12,11 @@ app.use(cors());
 
 app.use(express.json());
 
+
 route(app);
+
+
+app.get("/favicon.ico", (req, res) => res.status(204).end());
 
 app.use((req, res, next) => {
     return next(new ApiError(400, "Resource not found"));
@@ -23,6 +27,10 @@ app.use((error, req, res, next) => {
         message: error.message || "Internal server error",
     });
 });
+
+app.get("/", (req, res) => {
+    res.json({ message: "Welcome to contact book application" })
+})
 
 const PORT = process.env.PORT
 //su dung dotenv: data luu trong file .env

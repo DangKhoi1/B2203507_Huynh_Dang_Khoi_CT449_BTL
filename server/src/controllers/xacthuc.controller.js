@@ -48,7 +48,7 @@ module.exports.nhanVienDangNhap = async (req, res, next) => {
 module.exports.nhanVienDangKy = async (req, res, next) => {
     try {
         const dulieu = req.body
-        const nhanvien = new nhanvienService()
+        const nhanvien = new nhanVienService()
         const ketQuaDangKy = await nhanvien.dangKy(dulieu)
         res.status(200).json(ketQuaDangKy)
     } catch (error) {
