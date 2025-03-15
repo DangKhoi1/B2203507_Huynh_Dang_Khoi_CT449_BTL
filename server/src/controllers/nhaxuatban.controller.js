@@ -3,16 +3,17 @@ const jwt = require('jsonwebtoken');
 const ApiError = require('../api-error');
 
 function verifyToken(req, res) {
-    const token = req.headers['authorization']?.split(" ")[1]; // Lấy token từ header chuẩn
+    const token = req.headers['authorization']
     return new Promise((resolve, reject) => {
         jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, user) => {
             if (error || !user.ChucVu) {
-                return reject('Trái phép!');
-            } else {
-                resolve(user);
+                return reject('Trái phép !')
             }
-        });
-    });
+            else {
+                resolve(user)
+            }
+        })
+    })
 }
 
 // [POST] [nhaxuatban/add]

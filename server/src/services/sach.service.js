@@ -1,4 +1,4 @@
-const bookModel = require('../models/sach.model')
+const sachModel = require('../models/sach.model')
 
 module.exports = class sachService {
     async getAll() {
@@ -20,7 +20,7 @@ module.exports = class sachService {
             const sachDaLuu = await sachMoi.save()
             const sachTraVe = await sachDaLuu.populate('MaNXB')
             return {
-                book: sachTraVe,
+                sach: sachTraVe,
                 message: 'Thêm sách thành công!'
             }
         }
@@ -52,7 +52,7 @@ module.exports = class sachService {
         }
         await capNhatSach.populate('MaNXB')
         return {
-            book: capNhatSach,
+            sach: capNhatSach,
             message: 'Cập nhật sách thành công!'
         }
     }

@@ -10,4 +10,4 @@ router
     .patch('/admin/update', muonSachController.updateBorrowForAdmin)
     .delete('/user/delete/:muonId', muonSachController.deleteBorrowForUser)
     .delete('/admin/delete/:muonId', muonSachController.deleteBorrowForAdmin)
-module.exports = router
+module.exports = router;

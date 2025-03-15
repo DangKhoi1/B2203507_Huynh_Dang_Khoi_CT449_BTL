@@ -44,7 +44,7 @@ module.exports.getAllForUser = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while getAllForUser !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi getAllForUser !"))
     }
 }
 
@@ -61,7 +61,7 @@ module.exports.addBorrow = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while getAllForUser !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi getAllForUser !"))
     }
 }
 
@@ -79,7 +79,7 @@ module.exports.deleteBorrowForUser = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while deleteBorrowForUser !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi deleteBorrowForUser !"))
     }
 }
 
@@ -98,7 +98,7 @@ module.exports.deleteBorrowForAdmin = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while deleteBorrowForAdmin !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi deleteBorrowForAdmin !"))
     }
 }
 
@@ -115,7 +115,7 @@ module.exports.updateBorrowForAdmin = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while updateBorrowForAdmin !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi updateBorrowForAdmin !"))
     }
 }
 
@@ -132,6 +132,6 @@ module.exports.getAllForAdmin = async (req, res, next) => {
         if (error == 'Trái phép !') {
             return next(new ApiError(401, error))
         }
-        return next(new ApiError(500, "An error occurred while getAllForAdmin !"))
+        return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi getAllForAdmin !"))
     }
 }

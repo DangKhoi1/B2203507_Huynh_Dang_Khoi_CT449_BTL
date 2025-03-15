@@ -18,7 +18,7 @@ module.exports = class muonSachService {
         const muon = await muonSachModel.findOneAndDelete({ _id: muonId })
         if (muon) {
             if (muon.TrangThai != 'trả') {
-                const sach = await sachModel.findById(sach.MaSach)
+                const sach = await sachModel.findById(muon.MaSach)
                 await sachModel.findByIdAndUpdate(muon.MaSach, { $set: { SoLuongDaMuon: sach.SoLuongDaMuon - muon.SoLuongMuon } })
             }
         }
@@ -40,7 +40,7 @@ module.exports = class muonSachService {
                 { new: true }
             )
 
-            const chiTietMuon = await muonmSachModel.findOne(({ _id: capNhatDuLieu._id }))
+            const chiTietMuon = await muonSachModel.findOne(({ _id: capNhatDuLieu._id }))
                 .populate('MaSach')
                 .populate('MaNhanVien', ["HoTenNV", "ChucVu", "SoDienThoai"])
                 .populate('MaDocGia', ['HoLot', 'Ten', 'NgaySinh', 'GioiTinh', 'DiaChi', 'SoDienThoai'])

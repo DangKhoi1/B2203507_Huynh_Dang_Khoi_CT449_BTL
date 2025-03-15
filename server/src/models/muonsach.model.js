@@ -11,7 +11,6 @@ const bangMuonSach = mongoose.Schema(
         NgayTra: { type: Date },
         SoLuongMuon: { type: Number, required: true, default: 1 },
         TrangThai: { type: String, required: true, default: 'chưa giải quyết' },
-        //pending / borrow / paid
     },
     { timestamps: true, minimize: false, collection: 'MuonSach' },
 )

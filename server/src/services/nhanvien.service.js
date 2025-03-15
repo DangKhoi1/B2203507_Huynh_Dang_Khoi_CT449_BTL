@@ -49,7 +49,7 @@ module.exports = class nhanVienService {
 
             const { MatKhau, ...thongTinNhanVien } = kiemTraNhanVien._doc
 
-            //jwt.sign(payload, secretOrPrivateKey, [options])
+            //jwt.sign(payload, secretOrPrivateKey, [options]) B2203507_CT449_HKII_2024-2025
             const token = jwt.sign(thongTinNhanVien, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', { expiresIn: '1h' })
 
             return {
