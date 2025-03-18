@@ -1,0 +1,110 @@
+<template>
+  <header id="header">
+    <div class="container-fluid">
+      <div class="row inner-wrap">
+        <div class="col-md-2 logo-box">
+          <div class="main-logo" data-aos="fade-right">
+            <router-link to="/">
+              <img src="../assets/image/image.png" class="logo" />
+            </router-link>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="search">
+            <input type="text" class="input-search" placeholder="Nhập tên sách để tìm kiếm"
+              v-model="sachStore.searchText" />
+          </div>
+        </div>
+        <div class="main-menu col-4 col-md-4">
+          <ul class="menu-list">
+            <li class="menu-item">
+              <router-link to="/" :class="`${routeBookCheck() == 'trangchu' ? 'active' : ''}`">Trang chủ</router-link>
+            </li>
+            <li class="menu-item">
+              <router-link to="/lichsu" :class="`${routeBookCheck() == 'lichsu' ? 'active' : ''}`">Lịch sử mượn
+                sách</router-link>
+            </li>
+          </ul>
+        </div>
+        <div class="btn-group col-md-2 button-header" v-if="!user.token">
+          <button type="button" class="btn dropdown-toggle button-header-item" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            TÀI KHOẢN
+          </button>
+          <ul class="dropdown-menu dropdown-menu-end drop-down ul-dropdown">
+            <li>
+              <button class="dropdown-item" type="button" @click="handleNavigateToLoginUser">
+                Đăng nhập | Đọc giả
+              </button>
+            </li>
+          </ul>
+        </div>
+        <div v-if="user.token" class="btn-group col-md-2 button-header">
+          <button type="button" class="btn btn-primary button-logout" @click="NguoiDungDangXuat(user)">
+            Đăng xuất
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+</template>
+<script>
+import { ElInput, ElButton, ElMessage } from "element-plus";
+import { useUserStore } from "@/piniastores/nguoidung.store";
+import { mapStores } from "pinia";
+import { useBookStore } from "@/piniastores/sach.store";
+export default {
+  components: {
+    ElInput,
+  },
+
+  data() {
+    return {
+      value: "",
+      user: useUserStore(),
+    };
+  },
+
+  computed: {
+    ...mapStores(useBookStore),
+  },
+
+  methods: {
+    NguoiDungDangXuat(user) {
+      user.NguoiDungDangXuat();
+      ElMessage("Đăng xuất thành công!");
+      this.$router.push("/");
+    },
+    routeBookCheck() {
+      // console.log(this.$route.name)
+      return this.$route.name;
+    },
+
+    handleNavigateToLogin() {
+      this.$router.push("/dangnhap");
+    },
+    handleNavigateToLoginUser() {
+      this.$router.push("/dangnhap");
+    },
+  },
+};
+</script>
+<style>
+#header .inner-wrap .menu-item a {
+  font-weight: 600;
+}
+
+#header .inner-wrap .button-header button {
+  font-weight: 600;
+}
+
+.el-dropdown i {
+  width: 100%;
+  height: 100%;
+}
+
+.el-icon svg {
+  height: 40px;
+  width: 40px;
+}
+</style>
