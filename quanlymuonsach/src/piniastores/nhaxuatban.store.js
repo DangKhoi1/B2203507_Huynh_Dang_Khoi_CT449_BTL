@@ -15,7 +15,7 @@ export const usePublisherStore = defineStore('nhaxuatban', {
             const token = nguoiDungStore.staffToken
             return await axiosInstance.get('/nhaxuatban', { headers: { Authorization: token } })
                 .then((res) => {
-                    this.nhaxuatban = [...this.nhaxuatban, ...res.data.nhaXuatBan]
+                    this.nhaxuatban = res.data.nhaXuatBan;
                     this.fetching = true
                     return res.data.message
                 })
@@ -69,8 +69,8 @@ export const usePublisherStore = defineStore('nhaxuatban', {
 
     },
     getters: {
-        getPublisher(trangThai) {
-            return (MaNXB) => trangThai.nhaxuatban.find((item) => item.MaNXB == MaNXB);
+        getPublisher(state) {
+            return (MaNXB) => state.nhaxuatban.find((item) => item.MaNXB == MaNXB);
         },
     }
 })

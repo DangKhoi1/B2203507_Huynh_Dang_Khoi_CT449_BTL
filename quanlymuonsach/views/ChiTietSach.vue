@@ -70,7 +70,7 @@ export default {
                 await this.sachStore.getAll();
                 this.sach = this.sachStore.getBook(this.MaSach);
             } catch (error) {
-                console.error('Error fetching book details:', error);
+                console.error('Lỗi lấy chi tiết sách: ', error);
             }
         },
         async handleBorrow() {
@@ -83,7 +83,11 @@ export default {
                 ElMessage('Lỗi: Không tìm thấy sách!');
                 return;
             }
-
+            const soLuongConLai = this.sach.SoQuyen - this.sach.SoLuongDaMuon;
+            if (this.quantity > soLuongConLai) {
+                ElMessage.error('Số lượng mượn vượt quá số lượng sách còn lại!');
+                return;
+            }
             const data = {
                 MaSach: this.sach._id,
                 SoLuongMuon: this.quantity

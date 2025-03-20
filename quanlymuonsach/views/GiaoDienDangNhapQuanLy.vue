@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <!-- <Header></Header> -->
+    <HeaderDangNhap></HeaderDangNhap>
     <mauDangNhapQuanLy @handleSubmit="submit"></mauDangNhapQuanLy>
   </div>
 </template>
@@ -8,12 +8,12 @@
 import mauDangNhapQuanLy from "@/components/mauDangNhapQuanLy.vue";
 import { ElMessage } from "element-plus";
 import { useUserStore } from "@/piniastores/nguoidung.store";
-// import Header from "@/components/Header.vue";
+import HeaderDangNhap from "@/components/admin/HeaderDangNhap.vue";
 export default {
   name: "quanlydangnhap",
   components: {
     mauDangNhapQuanLy,
-    // Header,
+    HeaderDangNhap,
   },
   methods: {
     async submit(data) {

@@ -30,11 +30,11 @@
             </div>
           </template>
         </el-table-column>
-        <el-table-column type="index" label="STT"> </el-table-column>
+        <el-table-column type="index" label="STT" width="70"> </el-table-column>
         <el-table-column label="Mã sách" prop="MaSach" />
         <el-table-column label="Tên Sách" prop="TenSach">
           <template #default="scope">
-            <router-link :to="`/quanly/sach/${scope.row.MaSach}`">
+            <router-link :to="`/sach/${scope.row.MaSach}`">
               {{ scope.row.TenSach }}
             </router-link>
           </template>
@@ -62,10 +62,12 @@
     </div>
   </div>
 </template>
+
 <script>
 import { ElButton, ElInput, ElMessage } from "element-plus";
 import { useBookStore } from "@/piniastores/sach.store";
 import { mapStores } from "pinia";
+
 export default {
   components: {
     ElInput,
@@ -112,6 +114,7 @@ export default {
   },
 };
 </script>
+
 <style>
 .Book .button-manager {
   margin-bottom: 15px;
@@ -119,5 +122,9 @@ export default {
 
 .Book .button-manager:hover {
   background-color: #d06b18;
+}
+
+.el-table th {
+  white-space: nowrap;
 }
 </style>
