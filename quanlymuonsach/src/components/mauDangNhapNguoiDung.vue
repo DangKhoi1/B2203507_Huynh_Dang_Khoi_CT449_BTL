@@ -3,8 +3,8 @@
     <div class="loginContainer" data-aos="fade-up">
       <div class="loginBox">
         <div class="box-head">
-          <img src="" class="logo" />
-          <p>Đăng nhập | Đọc giả</p>
+          <img src="../assets/image/image.png" class="logo" />
+          <p>Đăng nhập</p>
         </div>
         <form @submit.prevent="submit" class="flex gap-1 m-4 infor-type">
           <input type="text" class="form-control mt-4" aria-label="Sizing example input"

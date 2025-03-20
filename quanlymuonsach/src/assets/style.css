@@ -1,12 +1,20 @@
 @import './normalize.css';
 
 :root {
-    --accent-color: #C5A992;
+    --accent-color: #4A90E2;
+    /* Changed from #C5A992 to teal */
     --dark-color: #2f2f2f;
-    --light-color: #F3F2EC;
-    --body-text-color: #757575;
+    /* Unchanged */
+    --light-color: #F7F7F7;
+    /* Changed from #FFFFFF to light gray */
+    --body-text-color: #5A5A5A;
+    /* Changed from #757575 to a darker gray for contrast */
     --light-text-color: #afafaf;
+    /* Unchanged */
     --dark-text-color: #2f2f2f;
+    /* Unchanged */
+    --header-color: #E6F0FA;
+    /* Changed from #FFF8DC to pastel blue */
 }
 
 :root {
@@ -14,7 +22,6 @@
     --heading-font: "Prata", Georgia, serif;
     --secondary-font: "Playfair Display", Georgia, serif;
 }
-
 
 html {
     box-sizing: border-box;
@@ -37,27 +44,29 @@ a {
     color: var(--accent-color);
 }
 
-
-
 #header .button-header .button-header-item {
     border: none;
     padding-bottom: 0px;
 }
 
 #header {
-    padding: 20px 0;
+    padding: auto 0;
     border-bottom: 1px solid #E0E0E0;
-    background-color: #f3f2ec;
+    background-color: var(--header-color);
 }
 
 #header .inner-wrap {
     align-items: center;
+    display: flex;
+    justify-content: center;
 }
 
 #header .inner-wrap .main-logo {
-    width: 80px;
-    height: 80px;
+    width: 120px;
+    height: 120px;
     object-fit: cover;
+    margin: 0 auto;
+    display: block;
 }
 
 #header .inner-wrap .main-logo img {
@@ -121,8 +130,6 @@ a {
     color: var(--body-text-color);
 }
 
-/* quai L lam sao kip */
-
 #header .button-header {
     padding-bottom: 8px;
 }
@@ -141,11 +148,9 @@ a {
 }
 
 #header .button-header .dropdown-menu li button:hover {
-    background-color: #C5A992;
+    background-color: #4A90E2;
+    /* Updated to match new accent color */
 }
-
-
-
 
 .container-fluid,
 .container-lg,
@@ -186,8 +191,9 @@ a:hover {
 img {
     display: inline-block;
     border: 0;
-    max-width: 100%;
+    max-width: 150%;
     height: auto;
+    width: 100%;
     vertical-align: middle;
 }
 
@@ -208,7 +214,6 @@ h5 {
     letter-spacing: 1px;
 }
 
-
 h2,
 .h2 {
     font-size: 100px;
@@ -220,8 +225,6 @@ h3,
     font-size: 1.4em;
     line-height: 1.4;
 }
-
-
 
 h5,
 .h5 {
@@ -259,13 +262,12 @@ p {
 }
 
 .section-title {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: 500;
     line-height: 1;
     position: relative;
     margin-bottom: 75px;
 }
-
 
 .section-header .section-title:before,
 .section-header .section-title:after {
@@ -291,12 +293,10 @@ p {
     text-transform: uppercase;
 }
 
-
 #featured-books .product-list {
     border-bottom: 1px solid #E0E0E0;
     margin-bottom: 30px;
 }
-
 
 #best-selling {
     background: #EDEBE4;
@@ -328,8 +328,16 @@ p {
     margin-top: 26px;
 }
 
-/*----- Footer 
---------------------------------------------------------------*/
+.img {
+    width: 120px;
+    height: auto;
+}
+
+.m-2 {
+    padding: 20px;
+}
+
+/*----- Footer ------*/
 footer#footer {
     padding-bottom: 80px;
     margin-top: 100px;
@@ -379,7 +387,6 @@ footer#footer {
     }
 }
 
-
 .products-grid {
     display: flex;
     justify-content: space-between;
@@ -408,17 +415,16 @@ footer#footer {
 
 .product-style img.product-item {
     position: relative;
-    background: #eadfd5;
     border: 1px solid #EAE8DF;
-    padding: 15%;
+    padding: 5%;
     cursor: pointer;
     width: 100%;
 }
 
 .product-style button.add-to-detail {
     position: absolute;
-    background: #000;
-    color: #fff;
+    background: #99CCFF;
+    color: #000;
     width: 100%;
     margin: 0;
     text-transform: uppercase;
@@ -429,6 +435,8 @@ footer#footer {
     left: 0;
     z-index: 9;
     transition: 0.3s ease-out;
+    border: #E0E0E0;
+    border-radius: 10px;
 }
 
 .product-style:hover button.add-to-detail {
@@ -467,7 +475,8 @@ footer#footer {
 }
 
 #header .button-logout:hover {
-    background-color: #d06b18;
+    background-color: #3267B2;
+    /* Updated to a darker shade of the new accent color */
 }
 
 #header .button-header {
@@ -490,19 +499,23 @@ footer#footer {
 
 /* button-form */
 .container .loginContainer .loginBox .button-submit {
-    background-color: #C5A992;
-    border: #C5A992;
+    background-color: #4A90E2;
+    /* Updated to match new accent color */
+    border: #4A90E2;
 }
 
 .container .loginContainer .loginBox .button-submit:hover {
-    background-color: #D06B18;
+    background-color: #3267B2;
+    /* Updated to a darker shade of the new accent color */
 }
 
 .button-submit:hover {
-    background-color: #D06B18;
+    background-color: #3267B2;
+    /* Updated to a darker shade of the new accent color */
 }
 
 .button-submit {
-    background-color: #C5A992;
-    border: #C5A992;
+    background-color: #4A90E2;
+    /* Updated to match new accent color */
+    border: #4A90E2;
 }

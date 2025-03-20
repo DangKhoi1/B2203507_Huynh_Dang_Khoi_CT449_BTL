@@ -17,7 +17,7 @@
                 <p m="t-0 b-2">Tổng số quyển: {{ scope.row?.SoQuyen }}</p>
                 <p m="t-0 b-2">
                   Năm xuất bản:
-                  {{ new Date(scope.row?.NamXuatBan).getFullYear() }}
+                  {{ new Date(scope.row?.NamXuatBan, 0, 1).getFullYear() }}
                 </p>
               </div>
               <div class="col-6">

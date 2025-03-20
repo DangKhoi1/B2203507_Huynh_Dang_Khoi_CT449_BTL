@@ -4,81 +4,35 @@
     <div class="loginContainer" data-aos="fade-up">
       <div class="loginBox">
         <div>
-          <img src="" class="logo" />
+          <img src="../assets/image/image.png" class="logo" />
           <p style="font-size: 25px">Đăng Ký</p>
           <p></p>
         </div>
 
         <div class="flex gap-1 m-4">
-          <input
-            type="text"
-            class="form-control mt-3"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Họ"
-            v-model="HoLot"
-          />
-          <input
-            type="text"
-            class="form-control mt-3"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Tên"
-            v-model="Ten"
-          />
-          <input
-            type="text"
-            class="form-control mt-4"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Số điện thoại"
-            v-model="SoDienThoai"
-          />
-          <input
-            type="password"
-            class="form-control mt-3"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Mật khẩu"
-            v-model="MatKhau"
-          />
-          <input
-            type="password"
-            class="form-control mt-3"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Mật khẩu xác thực"
-            v-model="MatKhau2"
-          />
-          <select
-            class="form-control mt-3"
-            v-model="GioiTinh"
-            aria-label="Chọn giới tính"
-          >
+          <input type="text" class="form-control mt-3" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Họ" v-model="HoLot" />
+          <input type="text" class="form-control mt-3" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Tên" v-model="Ten" />
+          <input type="text" class="form-control mt-4" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Số điện thoại" v-model="SoDienThoai" />
+          <input type="password" class="form-control mt-3" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Mật khẩu" v-model="MatKhau" />
+          <input type="password" class="form-control mt-3" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Mật khẩu xác thực" v-model="MatKhau2" />
+          <select class="form-control mt-3" v-model="GioiTinh" aria-label="Chọn giới tính">
             <option value="" disabled selected>Chọn giới tính</option>
             <option value="Nam">Nam</option>
             <option value="Nữ">Nữ</option>
           </select>
-          <input
-            type="text"
-            class="form-control mt-3"
-            aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm"
-            placeholder="Địa chỉ"
-            v-model="DiaChi"
-          />
+          <input type="text" class="form-control mt-3" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Địa chỉ" v-model="DiaChi" />
         </div>
-        <button
-          type="button"
-          class="btn btn-primary mt-2 button-submit"
-          @click="submit"
-        >
+        <button type="button" class="btn btn-primary mt-2 button-submit" @click="submit">
           Đăng ký
         </button>
-        <span class="mt-4"
-          >Nếu đã có tài khoản?
-          <router-link to="/dangnhap"><span>Đăng nhập</span></router-link></span
-        >
+        <span class="mt-4">Nếu đã có tài khoản?
+          <router-link to="/dangnhap"><span>Đăng nhập</span></router-link></span>
       </div>
     </div>
   </div>

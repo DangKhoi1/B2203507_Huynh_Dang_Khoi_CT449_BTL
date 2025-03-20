@@ -13,15 +13,19 @@ export const useBookStore = defineStore('sach', {
     },
     actions: {
         async getAll() {
-            return await axiosInstance.get('/sach')
-                .then((res) => {
-                    this.danhSachSach = [...this.danhSachSach, ...res.data.sach]
-                    this.fetching = true
-                    return res.data.message
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+            // Chỉ gọi API nếu danh sách sách đang trống
+            if (this.danhSachSach.length === 0) {
+                return await axiosInstance.get('/sach')
+                    .then((res) => {
+                        this.danhSachSach = res.data.sach;
+                        this.fetching = true;
+                        return res.data.message;
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+            }
+            return "Đã có dữ liệu sách";
         },
 
         async add(data) {

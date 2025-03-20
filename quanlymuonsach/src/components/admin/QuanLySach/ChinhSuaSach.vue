@@ -22,7 +22,7 @@ export default {
       data: {
         ...sach,
         MaNXB: sach.MaNXB ? sach.MaNXB._id : null,
-        NamXuatBan: sach.NamXuatBan ? new Date(sach.NamXuatBan).getFullYear() : null,
+        NamXuatBan: new Date(sach.NamXuatBan, 0, 1).getFullYear(),
       },
     };
 

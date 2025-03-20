@@ -4,7 +4,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="section-header align-center" data-aos="flip-up">
-                        <h2 class="section-title">Danh sách tác phẩm</h2>
+                        <h2 class="section-title">DANH SÁCH TÁC PHẨM</h2>
                     </div>
                     <div class="product-list"  data-aos="fade-up">
                         <div class="row">

@@ -33,8 +33,9 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end drop-down ul-dropdown">
             <li>
-              <button class="dropdown-item" type="button" @click="handleNavigateToLoginUser">
-                Đăng nhập | Đọc giả
+              <button class="dropdown-item" type="button" @click="handleNavigateToLoginUser"
+                style="text-align: center;">
+                Đăng nhập
               </button>
             </li>
           </ul>
