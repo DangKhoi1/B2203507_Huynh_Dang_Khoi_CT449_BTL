@@ -13,8 +13,7 @@
     </header>
 </template>
 <script>
-import { ElButton, ElInput, ElMessage } from "element-plus";
-import { useUserStore } from "@/piniastores/nguoidung.store";
+import { ElInput } from "element-plus";
 
 export default {
     components: {
