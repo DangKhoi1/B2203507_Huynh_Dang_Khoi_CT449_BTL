@@ -117,12 +117,12 @@ export default {
 
 .detailInfor {
     flex: 1;
-    padding-left: 10rem;
+    padding-left: 1.5rem;
     margin: auto;
 }
 
 .image {
-    width: 150%;
+    width: 100%;
     height: auto;
     object-fit: contain;
 }

@@ -5,7 +5,7 @@
                 <div class="col-md-12">
                     <div class="section-header align-center" data-aos="flip-up">
                         <h2 class="section-title">CHÀO MỪNG BẠN ĐẾN VỚI LIBRARY BOOK</h2>
-                        <h3 style="line-height: 0.5em;">Đến với LibraryBook và tận hưởng bầu trời kiến thức mà chúng tôi mang đến cho các bạn! </h3>
+                        <h3 style="line-height: 0.5em;">Đến với LibraryBook và tận hưởng bầu trời kiến thức mà chúng tôi mang đến cho bạn! </h3>
                     </div>
                     <div class="product-list"  data-aos="fade-up">
                         <div class="row">

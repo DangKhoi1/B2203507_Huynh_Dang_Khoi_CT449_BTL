@@ -36,4 +36,8 @@ export default {
     align-items: center;
     flex-direction: column;
 }
+
+.d-flex {
+    align-items: start;
+}
 </style>
