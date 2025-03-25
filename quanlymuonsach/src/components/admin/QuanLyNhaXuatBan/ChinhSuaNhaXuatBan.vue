@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h4 class="m-4 text-center">Chỉnh sửa Nhà Xuất Bản</h4>
+        <h4 class="m-4 text-center">CHỈNH SỬA NHÀ XUẤT BẢN</h4>
         <mauNhaXuatBan :nhaxuatban="data" @handleSubmit="submit" />
 
     </div>

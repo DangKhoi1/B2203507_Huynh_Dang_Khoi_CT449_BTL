@@ -1,6 +1,6 @@
 <template>
     <div class="Book">
-        <h4 class="text-center m-2 space-text">Quản lý nhà xuất bản</h4>
+        <h4 class="text-center m-2 space-text">QUẢN LÝ NHÀ XUẤT BẢN</h4>
         <div class="container create-btn-container d-flex justify-content-end">
             <button type="button" class="btn btn-primary buttonAdd" @click="navigatorToAdd">
                 Thêm nhà xuất bản mới

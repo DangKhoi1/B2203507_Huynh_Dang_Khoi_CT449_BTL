@@ -1,26 +1,20 @@
 @import './normalize.css';
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Poppins:wght@500;700&family=Montserrat:wght@400;600&display=swap');
 
 :root {
     --accent-color: #4A90E2;
-    /* Changed from #C5A992 to teal */
     --dark-color: #2f2f2f;
-    /* Unchanged */
     --light-color: #F7F7F7;
-    /* Changed from #FFFFFF to light gray */
     --body-text-color: #5A5A5A;
-    /* Changed from #757575 to a darker gray for contrast */
     --light-text-color: #afafaf;
-    /* Unchanged */
     --dark-text-color: #2f2f2f;
-    /* Unchanged */
     --header-color: #E6F0FA;
-    /* Changed from #FFF8DC to pastel blue */
 }
 
 :root {
-    --body-font: "Raleway", sans-serif;
-    --heading-font: "Prata", Georgia, serif;
-    --secondary-font: "Playfair Display", Georgia, serif;
+    --body-font: "Inter", sans-serif;
+    --heading-font: "Poppins", sans-serif;
+    --secondary-font: "Montserrat", sans-serif;
 }
 
 html {
@@ -90,7 +84,7 @@ a {
 }
 
 #header .search .input-search {
-    border: none;
+    border-color: #757575;
 }
 
 #header .search .input-search:focus {
@@ -107,13 +101,17 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 0px;
     height: 100%;
     padding: 40px;
 }
 
 #header .menu-list a {
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
+    font-size: 20px;
     font-weight: 500;
+    letter-spacing: 1px;
 }
 
 #header .button-header .drop-down {
@@ -263,10 +261,11 @@ p {
 
 .section-title {
     font-size: 2em;
-    font-weight: 500;
+    font-weight: 520;
     line-height: 1;
     position: relative;
-    margin-bottom: 75px;
+    margin-bottom: 50px;
+    color: var(--accent-color);
 }
 
 .section-header .section-title:before,
@@ -375,9 +374,9 @@ footer#footer {
 
 .footer-menu h5 {
     font-size: 1.5em;
-    font-weight: 500;
+    font-weight: 650;
     margin-top: 0;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     text-transform: capitalize;
 }
 

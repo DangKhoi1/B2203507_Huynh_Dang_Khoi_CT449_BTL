@@ -4,7 +4,9 @@
       <div class="loginBox">
         <div class="box-head">
           <img src="../assets/image/image.png" class="logo" />
-          <p>Đăng nhập</p>
+          <p
+            style="font-size: 25px; font-weight: 550; margin-top: -25px; margin-left: -10px; margin-bottom: 0px; margin-bottom: -30px;">
+            Đăng nhập</p>
         </div>
         <form @submit.prevent="submit" class="flex gap-1 m-4 infor-type">
           <input type="text" class="form-control mt-4" aria-label="Sizing example input"

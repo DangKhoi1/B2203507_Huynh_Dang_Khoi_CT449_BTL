@@ -34,29 +34,6 @@
                     </div>
                     <div class="col-md-2">
                         <div class="footer-menu">
-                            <h5>Khám Phá</h5>
-                            <ul class="menu-list">
-                                <li class="menu-item">
-                                    <a href="#">Về chúng tôi</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Sách mới</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Tác giả nổi tiếng</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Tác phẩm nổi tiếng</a>
-                                </li>
-                                <li class="menu-item">
-                                    <a href="#">Tìm kiếm nhiều nhất</a>
-                                </li>
-                            </ul>
-                        </div>
-    
-                    </div>
-                    <div class="col-md-2">
-                        <div class="footer-menu">
                             <h5>Chính Sách</h5>
                             <ul class="menu-list">
                                 <li class="menu-item">
@@ -74,7 +51,7 @@
                     </div>
                     <div class="col-md-2">
                         <div class="footer-menu">
-                            <h5>Giúp đỡ</h5>
+                            <h5>Trợ giúp</h5>
                             <ul class="menu-list">
                                 <li class="menu-item">
                                     <a href="#">Trung tâm hỗ trợ</a>

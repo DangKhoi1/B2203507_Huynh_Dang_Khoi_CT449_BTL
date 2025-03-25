@@ -30,7 +30,7 @@
     </div>
     <div class="d-flex flex-column my-2" style="width: 300px">
       <label>Hình ảnh:</label>
-      <el-input v-model="sach.image" style="width: 300px" size="large" placeholder="Nhập Link ảnh" />
+      <el-input v-model="sach.image" style="width: 300px" size="large" placeholder="Nhập image address của sách" />
     </div>
     <div class="d-flex justify-content-center align-items-center">
       <button type="button" class="btn btn-primary button-submit" @click="submit">

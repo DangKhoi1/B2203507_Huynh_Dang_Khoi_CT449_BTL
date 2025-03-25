@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h4 class="m-4 text-center">Chỉnh sửa sách</h4>
+        <h4 class="m-4 text-center">CHỈNH SỬA SÁCH</h4>
         <mauSach :sach="data" @handleSubmit="submit" />
     </div>
 </template>

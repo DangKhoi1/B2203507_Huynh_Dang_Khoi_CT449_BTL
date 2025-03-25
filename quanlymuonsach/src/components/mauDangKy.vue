@@ -5,7 +5,10 @@
       <div class="loginBox">
         <div>
           <img src="../assets/image/image.png" class="logo" />
-          <p style="font-size: 25px">Đăng Ký</p>
+          <p
+            style="font-size: 25px; font-weight: 550; margin-top: 3px; margin-left: -10px; margin-bottom: 0px; margin-bottom: -30px;">
+            Đăng ký
+          </p>
           <p></p>
         </div>
 

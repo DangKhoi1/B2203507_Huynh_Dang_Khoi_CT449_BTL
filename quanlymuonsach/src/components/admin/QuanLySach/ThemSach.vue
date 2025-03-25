@@ -1,6 +1,6 @@
 <template lang="">
     <div>
-        <h4 class="m-4 text-center">Thêm Sách</h4>
+        <h4 class="m-4 text-center">THÊM SÁCH</h4>
         <mauSach :sach="data" @handleSubmit="addBook" />
     </div>
 </template>

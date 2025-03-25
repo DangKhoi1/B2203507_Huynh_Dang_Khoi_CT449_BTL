@@ -2,7 +2,7 @@
   <Header></Header>
 
   <main class="container">
-    <h1 class="text-center m-2">Lịch sử mượn sách</h1>
+    <h1 class="text-center m-2">LỊCH SỬ MƯỢN SÁCH</h1>
     <el-table :data="muonsachStore.SachMuon" stripe style="width: 100%">
       <el-table-column type="expand">
         <template #default="scope">

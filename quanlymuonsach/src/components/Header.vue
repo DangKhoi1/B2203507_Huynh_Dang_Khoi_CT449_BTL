@@ -18,7 +18,7 @@
         <div class="main-menu col-4 col-md-4">
           <ul class="menu-list">
             <li class="menu-item">
-              <router-link to="/" :class="`${routeBookCheck() == 'trangchu' ? 'active' : ''}`">Trang chủ</router-link>
+              <router-link to="/" :class="`${routeBookCheck() == 'trangchu' ? 'active' : ''}`">Trang Chủ</router-link>
             </li>
             <li class="menu-item">
               <router-link to="/lichsu" :class="`${routeBookCheck() == 'lichsu' ? 'active' : ''}`">Lịch sử mượn
@@ -28,8 +28,8 @@
         </div>
         <div class="btn-group col-md-2 button-header" v-if="!user.token">
           <button type="button" class="btn dropdown-toggle button-header-item" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            TÀI KHOẢN
+            aria-expanded="false" style="font-size: 20px;">
+            Tài Khoản
           </button>
           <ul class="dropdown-menu dropdown-menu-end drop-down ul-dropdown">
             <li>
