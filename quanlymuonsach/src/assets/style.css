@@ -101,7 +101,7 @@ a {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 0px;
-    margin-left: 10px;
+    margin-left: 62px;
     margin-right: 0px;
     height: 100%;
     padding: 40px;
@@ -189,10 +189,17 @@ a:hover {
 img {
     display: inline-block;
     border: 0;
-    max-width: 150%;
+    max-width: 100%;
     height: auto;
     width: 100%;
     vertical-align: middle;
+}
+
+#header .main-logo img {
+    max-width: 100%;
+    /* Đảm bảo logo không vượt quá container */
+    height: 100%;
+    object-fit: contain;
 }
 
 /* nen den khi quet khoi */
@@ -381,10 +388,17 @@ footer#footer {
 }
 
 @media screen and (max-width: 768px) {
-    #footer .footer-item {
-        margin-right: 0;
+    .container-fluid {
+        padding-right: 30px;
+        /* Tăng padding trên màn hình nhỏ */
+    }
+
+    .menu-container {
+        padding-right: 30px;
+        /* Tăng padding trên màn hình nhỏ */
     }
 }
+
 
 .products-grid {
     display: flex;
@@ -432,7 +446,7 @@ footer#footer {
     bottom: 300px;
     bottom: -65px;
     left: 0;
-    z-index: 9;
+    z-index: 10;
     transition: 0.3s ease-out;
     border: #E0E0E0;
     border-radius: 10px;

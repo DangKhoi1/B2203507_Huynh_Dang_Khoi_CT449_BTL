@@ -19,7 +19,7 @@
             Đăng nhập
           </button>
         </form>
-        <span class="mt-4">Nếu chưa có tài khoản?
+        <span class="mt-4">Bạn chưa có tài khoản?
           <router-link to="/dangky"><span>Đăng ký</span></router-link></span>
       </div>
     </div>

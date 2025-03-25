@@ -3,9 +3,13 @@
         <div class="container-fluid">
             <div class="row inner-wrap">
                 <div class="col-md-2">
-                    <div class="main-logo">
-                        <router-link to="/quanlydangnhap"><img src="../../assets/image/image.png" alt=""
-                                style="margin-left: -650px;" /></router-link>
+                    <div class="col-md-2 logo-box">
+                        <div class="main-logo">
+                            <router-link to="/quanly/muon" class="logo-wrapper">
+                                <img src="../../assets/image/image.png" alt="LibraryBook Logo" class="logo" />
+                                <span class="logo-text">LibraryBook</span>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>

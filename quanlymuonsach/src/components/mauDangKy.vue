@@ -34,7 +34,7 @@
         <button type="button" class="btn btn-primary mt-2 button-submit" @click="submit">
           Đăng ký
         </button>
-        <span class="mt-4">Nếu đã có tài khoản?
+        <span class="mt-4">Bạn đã có tài khoản?
           <router-link to="/dangnhap"><span>Đăng nhập</span></router-link></span>
       </div>
     </div>

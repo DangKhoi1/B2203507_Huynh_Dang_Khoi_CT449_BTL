@@ -6,7 +6,6 @@
                         <div class="footer-item">
                             <div class="company-brand">
                                 <img src="../assets/image/image.png" alt="logo" class="footer-logo">
-                                <p>Hãy đến Library Book và tận hưởng bầu trời kiến thức mà chúng tôi mang đến với các bạn! </p>
                             </div>
                         </div>
     
