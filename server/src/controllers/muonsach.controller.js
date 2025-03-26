@@ -4,10 +4,10 @@ const ApiError = require('../api-error')
 
 // Hàm xác thực token cho người dùng thường
 function verifyTokenForUser(req, res) {
-    const token = req.headers['authorization']
+    const token = req.headers['authorization'] //Header, Payload, và Signature
     return new Promise((resolve, reject) => {
         jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, nguoiDung) => {
-            if (error) {  //Khong quan tam den nguoiDung.ChucVu
+            if (error) {  //Khong quan tam den nguoiDung.ChucVu 
                 return reject('Trái phép !')
             }
             else {
