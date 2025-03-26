@@ -92,7 +92,7 @@ export default {
                 );
 
                 await this.nhaxuatbanStore.delete(MaNXB);
-                ElMessage.success("Xóa nhà xuất bản thành công!");
+                ElMessage.success("Xóa nhà xuất bản thành công!"); //success để hiển thị xanh
                 await this.fetchData();
             } catch (error) {
                 ElMessage.info("Hủy xóa nhà xuất bản!");
