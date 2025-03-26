@@ -2,15 +2,16 @@ const nhaXuatBanService = require('../services/nhaxuatban.service');
 const jwt = require('jsonwebtoken');
 const ApiError = require('../api-error');
 
+// Hàm xác thực token
 function verifyToken(req, res) {
     const token = req.headers['authorization']
     return new Promise((resolve, reject) => {
-        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, user) => {
-            if (error || !user.ChucVu) {
+        jwt.verify(token, process.env.JWT_SECRET || 'B2203507_CT449_HKII_2024-2025', (error, nguoiDung) => {
+            if (error || !nguoiDung.ChucVu) {
                 return reject('Trái phép !')
             }
             else {
-                resolve(user)
+                resolve(nguoiDung)
             }
         })
     })
@@ -35,11 +36,11 @@ module.exports.add = async (req, res, next) => {
     }
 };
 
-// [PATCH] /nhaxuatban/capnhat/:MaNXB
+// [PATCH] /nhaxuatban/update/:MaNXB
 module.exports.update = async (req, res, next) => {
     try {
         await verifyToken(req, res);
-        const nhaxuatbanService = new nhaXuatBanService(); // Đặt tên biến rõ ràng hơn
+        const nhaxuatbanService = new nhaXuatBanService();
         const ketqua = await nhaxuatbanService.update(req.body);
 
         if (!ketqua.nhaXuatBan) {

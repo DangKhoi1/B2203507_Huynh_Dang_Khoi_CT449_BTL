@@ -2,7 +2,7 @@ const muonSachService = require('../services/muonsach.service')
 const jwt = require('jsonwebtoken')
 const ApiError = require('../api-error')
 
-
+// Hàm xác thực token cho người dùng thường
 function verifyTokenForUser(req, res) {
     const token = req.headers['authorization']
     return new Promise((resolve, reject) => {
@@ -17,7 +17,7 @@ function verifyTokenForUser(req, res) {
     })
 }
 
-
+// Hàm xác thực token cho admin (yêu cầu thêm điều kiện ChucVu)
 function verifyTokenForAdmin(req, res) {
     const token = req.headers['authorization']
     return new Promise((resolve, reject) => {
@@ -32,7 +32,8 @@ function verifyTokenForAdmin(req, res) {
     })
 }
 
-//for nguoiDung
+//nguoiDung
+// API lấy tất cả thông tin mượn sách cho người dùng
 module.exports.getAllForUser = async (req, res, next) => {
     try {
         const nguoiDung = await verifyTokenForUser(req, res)
@@ -47,7 +48,7 @@ module.exports.getAllForUser = async (req, res, next) => {
         return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi getAllForUser !"))
     }
 }
-
+// API thêm yêu cầu mượn sách cho người dùng
 module.exports.addBorrow = async (req, res, next) => {
     try {
         const nguoiDung = await verifyTokenForUser(req, res)
@@ -64,7 +65,7 @@ module.exports.addBorrow = async (req, res, next) => {
         return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi getAllForUser !"))
     }
 }
-
+// API xóa yêu cầu mượn sách cho người dùng
 module.exports.deleteBorrowForUser = async (req, res, next) => {
     try {
         const muonId = req.params.muonId
@@ -83,7 +84,8 @@ module.exports.deleteBorrowForUser = async (req, res, next) => {
     }
 }
 
-//for admin
+//Admin
+// API xóa yêu cầu mượn sách cho admin
 module.exports.deleteBorrowForAdmin = async (req, res, next) => {
     try {
         const muonId = req.params.muonId
@@ -102,6 +104,7 @@ module.exports.deleteBorrowForAdmin = async (req, res, next) => {
     }
 }
 
+// API cập nhật yêu cầu mượn sách cho admin
 module.exports.updateBorrowForAdmin = async (req, res, next) => {
     try {
         const nguoiDung = await verifyTokenForAdmin(req, res)
@@ -118,7 +121,7 @@ module.exports.updateBorrowForAdmin = async (req, res, next) => {
         return next(new ApiError(500, "Có 1 lỗi xảy ra trong khi updateBorrowForAdmin !"))
     }
 }
-
+// API lấy tất cả thông tin mượn sách cho admin
 module.exports.getAllForAdmin = async (req, res, next) => {
     try {
         const nguoiDung = await verifyTokenForAdmin(req, res)
