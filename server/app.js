@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 })
 
 const PORT = process.env.PORT
-//su dung dotenv: data luu trong file .env
+//su dung dotenv: Dùng để lấy biến môi trường từ file .env.
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
