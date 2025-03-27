@@ -101,7 +101,7 @@ import { useBorrowBookStore } from "@/piniastores/muonsach.store";
 import { ElMessage, ElButton, ElInput } from "element-plus";
 import { mapStores } from "pinia";
 export default {
-  mounted() { //Hàm chạy khi component được tạo
+  mounted() {
     const muon = useBorrowBookStore();
     if (!muon.fetchAdmin) {
       muon.getAllForAdmin();
@@ -110,7 +110,7 @@ export default {
   components: {
     ElInput,
   },
-  computed: { //Cho phép component truy cập dữ liệu từ store mà không cần gọi trực tiếp
+  computed: {
     ...mapStores(useBorrowBookStore), //ánh xạ
   },
   data() {
